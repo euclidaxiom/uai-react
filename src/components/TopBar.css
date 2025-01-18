@@ -1,0 +1,30 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 56px;
+  height: 56px;
+  width: 100%;
+  padding: 0 28px 0 28px;
+  background-color: white;
+  color: black;
+
+  .container--1 {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+
+    .container--2 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .top-bar {
+    background-color: black;
+    color: white;
+  }
+}

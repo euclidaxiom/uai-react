@@ -1,0 +1,62 @@
+.target-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 0;
+  font-weight: 600;
+  min-width: 44px;
+
+  .material-symbols-sharp {
+    font-variation-settings:
+      'wght' 600,
+  }
+}
+
+.button--32 {
+  height: 32px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+
+  .label-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+
+    .material-symbols-sharp {
+      font-variation-settings:
+        'opsz' 20;
+      font-size: 20px;
+    }
+  }
+
+  .label-text {
+    margin: 0 14px 0 0;
+  }
+
+  .label-text--solo {
+    margin: 0 14px 0 14px;
+  }
+
+  .trailing-icon {
+    display: flex;
+    align-items: center;
+    padding-right: 6px;
+
+    .material-symbols-sharp {
+      font-variation-settings:
+        'opsz' 20;
+      font-size: 16px;
+    }
+  }
+}
