@@ -1,0 +1,15 @@
+.li {
+  margin-inline-start: 60px;
+}
+
+.li::before {
+  display: inline-block;
+  width: 60px;
+  flex-shrink: 0;
+  margin-inline-start: -60px;
+}
+
+ul> :not(li, dfn, i, em, strong, mark),
+ol> :not(li, dfn, i, em, strong, mark) {
+  margin-inline-start: 60px;
+}

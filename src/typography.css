@@ -1,0 +1,149 @@
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1;
+}
+
+.h1 {
+  font-size: 56px;
+}
+
+.h2 {
+  font-size: 48px;
+}
+
+.h3 {
+  font-size: 40px;
+}
+
+.h4 {
+  font-size: 32px;
+}
+
+.h5 {
+  font-size: 28px;
+}
+
+.h6 {
+  font-size: 24px;
+}
+
+.p {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: .25px;
+  line-height: 28px;
+}
+
+dfn {
+  /* Define termos
+  Ex.: E por isso surgiu a <dfn title="Orientação à objetos">orientação à objetos</dfn> que usamos hoje*/
+  font-weight: 700;
+}
+
+i {
+  /* Muda a voz — como pensamentos e estrangeirismos
+  Ex.: Assim como no livro <i lang="en" translate="no">The Four Hour Work Week</i>*/
+  font-style: italic;
+}
+
+em {
+  /* Muita ênfase — que afeta a semântica
+  Ex.: Gatos são <em>sim</em> os melhores */
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+strong {
+  /* Marca trecho conciso separando da dissertação
+  Ex.: <strong>Tom, a base da harmonia</strong> — também chamada de nota de descanso*/
+  font-weight: 700;
+}
+
+mark {
+  /* Marca notação */
+  background-color: var(--fg);
+  color: var(--bg);
+}
+
+
+q {
+  quotes: "“ " "”";
+  font-style: italic;
+}
+
+aside {
+  font-family: ui-serif, serif;
+  margin-block-start: 60px;
+  margin-block-end: 60px;
+  margin-inline-start: 60px;
+  margin-inline-end: 60px;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a[target="_blank"]::after {
+  content: " ↗";
+}
+
+.asterism::before {
+  display: block;
+  width: 100%;
+  margin-block-start: 60px;
+  margin-block-end: 60px;
+  content: "• • •";
+  font-size: 20px;
+  text-align: center;
+}
+
+.li::before {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.ul .li::before {
+  content: "•";
+}
+
+.ol {
+  counter-reset: tab0;
+}
+
+.ol .li {
+  counter-increment: tab0;
+}
+
+.ol .li::before {
+  content: counter(tab0);
+}
+
+.ol .ol {
+  counter-reset: tab1;
+}
+
+.ol .ol .li {
+  counter-increment: tab1;
+}
+
+.ol .ol .li::before {
+  content: counter(tab0) "." counter(tab1);
+}
+
+.ol .ol .ol {
+  counter-reset: tab2;
+}
+
+.ol .ol .ol .li {
+  counter-increment: tab2;
+}
+
+.ol .ol .ol .li::before {
+  content: counter(tab0) "." counter(tab1) "." counter(tab2);
+}
