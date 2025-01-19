@@ -1,0 +1,25 @@
+{
+  "name": "@uai-ui-react/button",
+  "version": "0.0.1",
+  "main": "./src/index.ts",
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "@uai-ui-react/target-area": "workspace:*",
+  },
+  "peerDependencies": {
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "react": "^18.3.1 || ^19.0",
+    "react-dom": "^18.3.1 || ^19.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@types/react-dom": {
+      "optional": true
+    }
+  }
+}
