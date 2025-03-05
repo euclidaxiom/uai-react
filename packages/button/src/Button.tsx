@@ -21,14 +21,10 @@ import "./Button.css";
 
 interface ButtonContext {
   size: string;
-  hasIcon: boolean;
-  hasText: boolean;
 }
 
 const ButtonContext = createContext<ButtonContext>({
   size: "32",
-  hasIcon: false,
-  hasText: false,
 });
 
 type ButtonChildren =
@@ -82,16 +78,19 @@ interface Button extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = forwardRef<HTMLButtonElement, Button>(
   ({ size, children, ...props }, ref) => {
     const { icon, text, trailingIcon } = parseButtonChildren(children);
-    const hasIcon = !!icon;
-    const hasText = !!text;
+    const hasLabel = !!icon || !!text;
 
     return (
       <button ref={ref} {...props}>
         <TargetArea>
-          <ButtonContext.Provider value={{ size, hasIcon, hasText }}>
+          <ButtonContext.Provider value={{ size }}>
             <div className={`uai-Button uai-Button--size${size}`}>
-              {icon}
-              {text}
+              {hasLabel && (
+                <div className="label">
+                  {icon}
+                  {text}
+                </div>
+              )}
               {trailingIcon}
             </div>
           </ButtonContext.Provider>
@@ -113,16 +112,8 @@ interface ButtonText extends React.HTMLAttributes<HTMLSpanElement> {
 
 const ButtonText = forwardRef<HTMLSpanElement, ButtonText>(
   ({ children, ...props }, ref) => {
-    const { hasIcon } = useContext(ButtonContext);
-
     return (
-      <span
-        ref={ref}
-        className={`${
-          hasIcon ? "uai-Button-text--with-icon" : "uai-Button-text"
-        }`}
-        {...props}
-      >
+      <span ref={ref} {...props}>
         {children}
       </span>
     );
@@ -161,19 +152,8 @@ interface ButtonTrailingIcon extends React.HTMLAttributes<HTMLSpanElement> {
 
 const ButtonTrailingIcon = forwardRef<HTMLSpanElement, ButtonTrailingIcon>(
   ({ children, ...props }, ref) => {
-    const { hasIcon, hasText } = useContext(ButtonContext);
-    const hasOther = hasIcon || hasText;
-
     return (
-      <span
-        ref={ref}
-        className={`${
-          hasOther
-            ? "uai-Button-icon--trailing"
-            : "uai-Button-icon--trailing--solo"
-        }`}
-        {...props}
-      >
+      <span ref={ref} className="uai-Button-icon--trailing" {...props}>
         {children}
       </span>
     );

@@ -6,6 +6,7 @@
     "src"
   ],
   "dependencies": {
+    "@uai-ui-react/base-css": "workspace:*",
     "@uai-ui-react/target-area": "workspace:*"
   },
   "peerDependencies": {
