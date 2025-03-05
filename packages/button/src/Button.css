@@ -38,14 +38,19 @@
   font-size: 20px;
 }
 
-.uai-Button--size32 .uai-Button-icon--trailing {
+.uai-Button--size32 .uai-Button-icon--trailing,
+.uai-Button--size32 .uai-Button-icon--trailing--solo {
   width: 16px;
   height: 16px;
-  margin-right: 6px;
 }
 
-.uai-Button--size32 .uai-Button-icon--trailing * {
+.uai-Button--size32 .uai-Button-icon--trailing *,
+.uai-Button--size32 .uai-Button-icon--trailing--solo * {
   font-size: 16px;
+}
+
+.uai-Button--size32 .uai-Button-icon--trailing {
+  margin-right: 6px;
 }
 
 .uai-Button--size32 .uai-Button-icon svg,

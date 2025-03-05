@@ -46,6 +46,11 @@ function ButtonSection() {
           <span className="material-symbols-sharp">select</span>
         </ButtonTrailingIcon>
       </Button>
+      <Button size="32">
+        <ButtonTrailingIcon>
+          <span className="material-symbols-sharp">select</span>
+        </ButtonTrailingIcon>
+      </Button>
     </ComponentSection>
   );
 }

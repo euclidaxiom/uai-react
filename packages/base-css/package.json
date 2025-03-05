@@ -1,0 +1,9 @@
+{
+  "name": "@uai-ui-react/base-css",
+  "version": "0.0.1",
+  "style": "./src/styles.css",
+  "main": "./src/styles.css",
+  "files": [
+    "src"
+  ]
+}

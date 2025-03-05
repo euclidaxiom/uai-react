@@ -7,6 +7,7 @@ import React, {
   isValidElement,
 } from "react";
 import { TargetArea } from "@uai-ui-react/target-area";
+
 import "./Button.css";
 
 //     |\|\
@@ -19,13 +20,15 @@ import "./Button.css";
 //  BUTTON
 
 interface ButtonContext {
-  hasIcon: boolean;
   size: string;
+  hasIcon: boolean;
+  hasText: boolean;
 }
 
 const ButtonContext = createContext<ButtonContext>({
-  hasIcon: false,
   size: "32",
+  hasIcon: false,
+  hasText: false,
 });
 
 type ButtonChildren =
@@ -79,12 +82,13 @@ interface Button extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = forwardRef<HTMLButtonElement, Button>(
   ({ size, children, ...props }, ref) => {
     const { icon, text, trailingIcon } = parseButtonChildren(children);
-    const hasIcon = !icon;
+    const hasIcon = !!icon;
+    const hasText = !!text;
 
     return (
       <button ref={ref} {...props}>
         <TargetArea>
-          <ButtonContext.Provider value={{ hasIcon, size }}>
+          <ButtonContext.Provider value={{ size, hasIcon, hasText }}>
             <div className={`uai-Button uai-Button--size${size}`}>
               {icon}
               {text}
@@ -108,15 +112,15 @@ interface ButtonText extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 const ButtonText = forwardRef<HTMLSpanElement, ButtonText>(
-  ({ children, className, ...props }, ref) => {
+  ({ children, ...props }, ref) => {
     const { hasIcon } = useContext(ButtonContext);
 
     return (
       <span
         ref={ref}
         className={`${
-          hasIcon ? "uai-Button-text" : "uai-Button-text--with-icon"
-        } ${className}`}
+          hasIcon ? "uai-Button-text--with-icon" : "uai-Button-text"
+        }`}
         {...props}
       >
         {children}
@@ -136,9 +140,9 @@ interface ButtonIcon extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 const ButtonIcon = forwardRef<HTMLSpanElement, ButtonIcon>(
-  ({ children, className, ...props }, ref) => {
+  ({ children, ...props }, ref) => {
     return (
-      <span ref={ref} className={`uai-Button-icon ${className}`} {...props}>
+      <span ref={ref} className="uai-Button-icon" {...props}>
         {children}
       </span>
     );
@@ -156,11 +160,18 @@ interface ButtonTrailingIcon extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 const ButtonTrailingIcon = forwardRef<HTMLSpanElement, ButtonTrailingIcon>(
-  ({ children, className, ...props }, ref) => {
+  ({ children, ...props }, ref) => {
+    const { hasIcon, hasText } = useContext(ButtonContext);
+    const hasOther = hasIcon || hasText;
+
     return (
       <span
         ref={ref}
-        className={`uai-Button-icon--trailing ${className}`}
+        className={`${
+          hasOther
+            ? "uai-Button-icon--trailing"
+            : "uai-Button-icon--trailing--solo"
+        }`}
         {...props}
       >
         {children}

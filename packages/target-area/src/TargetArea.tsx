@@ -1,4 +1,4 @@
-import React, { ReactNode, forwardRef } from "react";
+import React, { ReactElement, forwardRef } from "react";
 
 //     |\|\
 //    /nn /\______
@@ -18,7 +18,7 @@ const style = {
 };
 
 interface TargetArea extends React.HTMLAttributes<HTMLDivElement> {
-  children: ReactNode;
+  children: ReactElement;
 }
 
 const TargetArea = forwardRef<HTMLDivElement, TargetArea>(

@@ -1,0 +1,34 @@
+@import '/Users/greco/Library/Mobile Documents/com~apple~CloudDocs/Documents/Projetos/UaiUI/Pacotes/uai-react/node_modules/@uai-ui-react/base-css';
+
+.uai-Top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 56px;
+  height: 56px;
+  width: 100%;
+  padding: 0 28px 0 28px;
+  background-color: var(--Tob-bar-background-color, --bg);
+  color: var(--Tob-bar-color, --fg);
+
+  .container--1 {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+
+    .container--2 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+}
+
+.uai-Top-bar .leading,
+.uai-Top-bar .center,
+.uai-Top-bar .trailing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+}

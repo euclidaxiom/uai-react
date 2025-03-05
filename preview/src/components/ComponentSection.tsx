@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "./ComponentSection.css";
-import { AppContext } from "../App";
+import { BordersContext } from "../App";
 
 function ComponentSection({
   name,
@@ -9,7 +9,7 @@ function ComponentSection({
   name: String;
   children: React.ReactNode;
 }) {
-  const { showBorders } = useContext(AppContext);
+  const { showBorders } = useContext(BordersContext);
   return (
     <section className="component-section">
       <h2 className="section-title h6">{name}</h2>
