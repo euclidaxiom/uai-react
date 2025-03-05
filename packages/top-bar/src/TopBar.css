@@ -1,34 +1,39 @@
 @import '@uai-ui-react/base-css/src/index.css';
 
+:root {
+  --top-bar-title: var(--size-17);
+  --top-bar-padding: var(--size-17);
+  --top-bar-gap-1: var(--size-17);
+  --top-bar-gap-2: var(--size-18);
+}
+
 .uai-Top-bar {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 56px;
-  height: 56px;
+  gap: var(--top-bar-gap-2);
   width: 100%;
-  padding: 0 28px 0 28px;
-  background-color: var(--Tob-bar-background-color, --bg);
+  padding: var(--top-bar-padding);
+  background-color: var(--bg);
   color: var(--Tob-bar-color, --fg);
 
-  .container--1 {
+  .leading,
+  .center,
+  .trailing {
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 56px;
-
-    .container--2 {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    gap: var(--top-bar-gap-2);
   }
-}
 
-.uai-Top-bar .leading,
-.uai-Top-bar .center,
-.uai-Top-bar .trailing {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 28px;
+  .center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: var(--6-column);
+    font-size: var(--top-bar-title);
+    line-height: 1;
+  }
 }
