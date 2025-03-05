@@ -1,4 +1,4 @@
-@import '/Users/greco/Library/Mobile Documents/com~apple~CloudDocs/Documents/Projetos/UaiUI/Pacotes/uai-react/node_modules/@uai-ui-react/base-css';
+@import '@uai-ui-react/base-css/src/index.css';
 
 .uai-Top-bar {
   display: flex;
