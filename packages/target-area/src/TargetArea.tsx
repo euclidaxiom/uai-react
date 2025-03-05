@@ -13,8 +13,8 @@ const style = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  minHeight: "44px",
-  minWidth: "44px",
+  // minHeight: "44px",
+  // minWidth: "44px",
 };
 
 interface TargetArea extends React.HTMLAttributes<HTMLDivElement> {
