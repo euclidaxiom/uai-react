@@ -70,31 +70,31 @@ function parseButtonChildren(
 }
 
 interface Button extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  size: string;
+  size?: string;
   children: ButtonChildren;
 }
 
 const Button = forwardRef<HTMLButtonElement, Button>(
   ({ size, children, ...props }, ref) => {
+    const buttonContext = useContext(ButtonContext);
+    const buttonSize = buttonContext.size || size || "32";
     const { icon, text, trailingIcon } = parseButtonChildren(children);
     const hasLabel = !!icon || !!text;
 
     return (
-      <ButtonContext.Provider value={{ size }}>
-        <button
-          className={`uai-Button uai-Button--size${size}`}
-          ref={ref}
-          {...props}
-        >
-          {hasLabel && (
-            <div className="label">
-              {icon}
-              {text}
-            </div>
-          )}
-          {trailingIcon}
-        </button>
-      </ButtonContext.Provider>
+      <button
+        className={`uai-Button uai-Button--size${buttonSize}`}
+        ref={ref}
+        {...props}
+      >
+        {hasLabel && (
+          <div className="label">
+            {icon}
+            {text}
+          </div>
+        )}
+        {trailingIcon}
+      </button>
     );
   }
 );
@@ -163,4 +163,4 @@ ButtonTrailingIcon.displayName = "ButtonTrailingIcon";
 
 //  ///////////////////////////////////////////////////////////////////////////
 
-export { Button, ButtonIcon, ButtonText, ButtonTrailingIcon };
+export { Button, ButtonIcon, ButtonText, ButtonTrailingIcon, ButtonContext };

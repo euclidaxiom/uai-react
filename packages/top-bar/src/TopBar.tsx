@@ -1,5 +1,5 @@
 import React, { ReactNode, forwardRef, useContext } from "react";
-import { Button, ButtonIcon } from "@uai-ui-react/button";
+import { Button, ButtonIcon, ButtonContext } from "@uai-ui-react/button";
 import { AppContext, LayoutContext } from "@uai-ui-react/app-context";
 
 import "./TopBar.css";
@@ -22,28 +22,34 @@ const TopBar = forwardRef<HTMLDivElement, TopBar>(({ children }, ref) => {
 
   return (
     <div ref={ref} className="uai-Top-bar">
-      <div className="leading">
-        <Button size="32">
-          <ButtonIcon>
-            <span className="material-symbols-sharp">dock_to_right</span>
-          </ButtonIcon>
-        </Button>
+      <ButtonContext.Provider value={{ size: "32" }}>
+        <div className="leading">
+          <Button>
+            <ButtonIcon>
+              <span className="material-symbols-sharp">dock_to_right</span>
+            </ButtonIcon>
+          </Button>
 
-        {/* <div>
-          <Button size="32">
-            <ButtonIcon>
-              <span className="material-symbols-sharp">arrow_back_ios_new</span>
-            </ButtonIcon>
-          </Button>
-          <Button size="32">
-            <ButtonIcon>
-              <span className="material-symbols-sharp">arrow_forward_ios</span>
-            </ButtonIcon>
-          </Button>
-        </div> */}
-      </div>
-      <div className="center">{showTitle && <div>{children}</div>}</div>
-      <div className="trailing"></div>
+          <div className="uai-Button-group--size32">
+            <Button>
+              <ButtonIcon>
+                <span className="material-symbols-sharp">
+                  arrow_back_ios_new
+                </span>
+              </ButtonIcon>
+            </Button>
+            <Button>
+              <ButtonIcon>
+                <span className="material-symbols-sharp">
+                  arrow_forward_ios
+                </span>
+              </ButtonIcon>
+            </Button>
+          </div>
+        </div>
+        <div className="center">{showTitle && <div>{children}</div>}</div>
+        <div className="trailing"></div>
+      </ButtonContext.Provider>
     </div>
   );
 });
