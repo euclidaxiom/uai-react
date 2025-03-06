@@ -80,19 +80,21 @@ const Button = forwardRef<HTMLButtonElement, Button>(
     const hasLabel = !!icon || !!text;
 
     return (
-      <button ref={ref} {...props}>
-        <ButtonContext.Provider value={{ size }}>
-          <div className={`uai-Button uai-Button--size${size}`}>
-            {hasLabel && (
-              <div className="label">
-                {icon}
-                {text}
-              </div>
-            )}
-            {trailingIcon}
-          </div>
-        </ButtonContext.Provider>
-      </button>
+      <ButtonContext.Provider value={{ size }}>
+        <button
+          className={`uai-Button uai-Button--size${size}`}
+          ref={ref}
+          {...props}
+        >
+          {hasLabel && (
+            <div className="label">
+              {icon}
+              {text}
+            </div>
+          )}
+          {trailingIcon}
+        </button>
+      </ButtonContext.Provider>
     );
   }
 );
