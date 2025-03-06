@@ -6,7 +6,6 @@ import React, {
   forwardRef,
   isValidElement,
 } from "react";
-import { TargetArea } from "@uai-ui-react/target-area";
 
 import "./Button.css";
 
@@ -82,19 +81,17 @@ const Button = forwardRef<HTMLButtonElement, Button>(
 
     return (
       <button ref={ref} {...props}>
-        <TargetArea>
-          <ButtonContext.Provider value={{ size }}>
-            <div className={`uai-Button uai-Button--size${size}`}>
-              {hasLabel && (
-                <div className="label">
-                  {icon}
-                  {text}
-                </div>
-              )}
-              {trailingIcon}
-            </div>
-          </ButtonContext.Provider>
-        </TargetArea>
+        <ButtonContext.Provider value={{ size }}>
+          <div className={`uai-Button uai-Button--size${size}`}>
+            {hasLabel && (
+              <div className="label">
+                {icon}
+                {text}
+              </div>
+            )}
+            {trailingIcon}
+          </div>
+        </ButtonContext.Provider>
       </button>
     );
   }
