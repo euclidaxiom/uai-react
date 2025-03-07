@@ -62,7 +62,7 @@ function TopBarPage() {
           style={{ marginTop: `${topBarHeight}px` }}
           ref={contentAreaRef}
         >
-          <p style={{ width: "320px" }}>
+          <p style={{ width: "40.0000000002%", marginTop: "64px" }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
             risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
             nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
@@ -90,7 +90,13 @@ function TopBarPage() {
             consectetur adipiscing elit. Sed non risus. Suspendisse lectus
             tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
             Cras elementum ultrices diam. Maecenas ligula massa, varius a,
-            semper congue, euismod non, mi.
+            semper congue, euismod non, mi. Suspendisse lectus tortor, dignissim
+            sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum
+            ultrices diam. Maecenas ligula massa, varius a, semper congue,
+            euismod non, mi. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet,
+            adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.
+            Maecenas ligula massa, varius a, semper congue, euismod non, mi.
           </p>
         </div>
       </div>

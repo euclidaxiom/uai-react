@@ -16,9 +16,9 @@
   width: 100%;
   padding: var(--top-bar-padding);
   background: var(--theme-Top-bar-background, --bg);
-  color: var(--Tob-bar-color, --fg);
   backdrop-filter: var(--theme-Top-bar-backdrop-filter, none);
   filter: var(--theme-Top-bar-filter);
+  transition: all 0.2s ease-in-out;
 
   .leading,
   .center,
@@ -35,6 +35,8 @@
     top: 50%;
     transform: translate(-50%, -50%);
     max-width: var(--6-column);
+    color: var(--theme-Top-bar-title-color, --fg);
+    font-weight: var(--theme-Top-bar-title-weight, 400);
     font-size: var(--top-bar-title);
     line-height: 1;
   }
