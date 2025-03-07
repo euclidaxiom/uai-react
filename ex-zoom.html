@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela com Zoom</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .zoom-container {
+      position: relative;
+      overflow: auto;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .design-canvas {
+      width: 0px;
+      aspect-ratio: 2/1;
+      background-color: black;
+      transform-origin: center center;
+      transition: transform 0.2s ease;
+    }
+  </style>
+
+  <script>
+    function calculateAndApplyScale() {
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+
+      const width = 1357.65;
+      const height = width / 2;
+
+      const xMargin = (6.6666666667 / 100) * 2;
+      const yMargin = 128 * 2;
+
+      const xRenderSize = viewportWidth - viewportWidth * xMargin;
+      const yRenderSize = viewportHeight - yMargin;
+
+      const xScaleValue = xRenderSize / width;
+      const yScaleValue = yRenderSize / height;
+
+      const designCanvas = document.getElementById('design-canvas');
+      designCanvas.style.width = `${width}px`;
+
+      if (height * xScaleValue > yRenderSize) {
+        designCanvas.style.scale = yScaleValue;
+      } else {
+        designCanvas.style.scale = xScaleValue;
+      }
+    }
+
+    window.addEventListener('load', calculateAndApplyScale);
+    window.addEventListener('resize', calculateAndApplyScale);
+  </script>
+</head>
+
+<body>
+  <div class="zoom-container">
+    <div class="design-canvas" id="design-canvas">
+      <!-- Conteúdo do protótipo aqui... -->
+    </div>
+  </div>
+</body>
+
+</html>

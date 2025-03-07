@@ -8,7 +8,7 @@ import {
 
 function ButtonSection() {
   return (
-    <ComponentSection name="Button">
+    <ComponentSection name="Button" link="/button-preview">
       <Button size="32">
         <ButtonIcon>
           <span className="material-symbols-sharp">select</span>

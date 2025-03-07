@@ -3,7 +3,7 @@ import { TopBar } from "@uai-ui-react/top-bar";
 
 function TopBarSection() {
   return (
-    <ComponentSection name="TopBar">
+    <ComponentSection name="TopBar" link="/top-bar-preview">
       <TopBar>Hello</TopBar>
     </ComponentSection>
   );

@@ -7,11 +7,12 @@
     "dev": "vite"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "@uai-ui-react/app-context": "workspace:*",
     "@uai-ui-react/button": "workspace:*",
     "@uai-ui-react/top-bar": "workspace:*",
-    "@uai-ui-react/app-context": "workspace:*"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.18",
