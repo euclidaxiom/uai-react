@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import TopBarPreview from "./pages/TopBarPreview";
+import TopBarPrototype from "./pages/TopBarPrototype.tsx";
 
 const router = createBrowserRouter([
   {
@@ -9,7 +9,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/top-bar-preview",
-    element: <TopBarPreview />,
+    element: <TopBarPrototype />,
   },
 ]);
 

@@ -1,20 +1,12 @@
 import ZoomContainer from "../components/ZoomContainer";
 import sequoiaWallpaper from "../public/macos-sequoia-wallpaper.png";
+import TopBarPage from "./TopBarPage";
 
-function TopBarPreview() {
+function TopBarPrototype() {
   return (
     <>
       <ZoomContainer>
-        <div
-          style={{
-            overflow: "hidden",
-            width: "100%",
-            height: "100%",
-            backgroundColor: "#fff",
-          }}
-        >
-          Hi Hi
-        </div>
+        <TopBarPage />
       </ZoomContainer>
       <div
         style={{
@@ -34,4 +26,4 @@ function TopBarPreview() {
   );
 }
 
-export default TopBarPreview;
+export default TopBarPrototype;

@@ -15,8 +15,10 @@
   gap: var(--top-bar-gap-2);
   width: 100%;
   padding: var(--top-bar-padding);
-  background-color: var(--bg);
+  background: var(--theme-Top-bar-background, --bg);
   color: var(--Tob-bar-color, --fg);
+  backdrop-filter: var(--theme-Top-bar-backdrop-filter, none);
+  filter: var(--theme-Top-bar-filter);
 
   .leading,
   .center,
