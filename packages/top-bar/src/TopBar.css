@@ -18,7 +18,7 @@
   background: var(--theme-Top-bar-background, --bg);
   backdrop-filter: var(--theme-Top-bar-backdrop-filter, none);
   filter: var(--theme-Top-bar-filter);
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-out;
 
   .leading,
   .center,

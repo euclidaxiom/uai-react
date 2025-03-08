@@ -24,12 +24,12 @@
 
 .button--plan {
   background: var(--button--background--plan);
-  color: var(--button--color--plan, --button--color);
+  color: var(--button--color--plan, var(--button--color));
 }
 
 .button--plan:hover {
   background: var(--button--background--plan--hover);
-  color: var(--button--color--plan--hover, --button--color--hover);
+  color: var(--button--color--plan--hover, var(--button--color--hover));
 }
 
 .button::after {
@@ -58,8 +58,7 @@
   gap: var(--uai--button--gap--32);
   line-height: var(--uai--button--icon-size--32);
   letter-spacing: var(--button--letter-spacing--32);
-  border-radius: var(--button--border-radius--32, --button--border-radius);
-  /* O fallback pro border-radius geral não está funcionando */
+  border-radius: var(--button--border-radius--32, var(--button--border-radius));
   mask-image: linear-gradient(white, white);
   -webkit-mask-image: -webkit-linear-gradient(white, white);
 }
@@ -80,11 +79,11 @@
 
 .button--32 .icon * {
   font-size: var(--uai--button--icon-size--32);
-  color: var(--button--icon-color--plan, --button--icon-color, currentColor);
+  color: var(--button--icon-color--plan, var(--button--icon-color), currentColor);
 }
 
 .button--32:hover .icon * {
-  color: var(--button--icon-color--plan--hover, --button--icon-color--hover, currentColor);
+  color: var(--button--icon-color--plan--hover, var(--button--icon-color--hover), currentColor);
 }
 
 .button--32 .trailing-icon {
