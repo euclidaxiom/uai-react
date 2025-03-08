@@ -1,43 +1,83 @@
 @import '@uai-ui-react/base-css/src/index.css';
 
 :root {
-  --top-bar-title: var(--size-17);
-  --top-bar-padding: var(--size-17);
-  --top-bar-gap-1: var(--size-17);
-  --top-bar-gap-2: var(--size-18);
+  /* Space */
+  --uai--top-bar--horizontal-padding: var(--size-17);
+  --uai--top-bar--vertical-padding: var(--size-17);
+  /* outside to inside */
+  --uai--top-bar--gap--md: var(--size-18);
+  --uai--top-bar--gap--sm: var(--size-17);
+
+  /* Typography */
+  --uai--top-bar--title-size: var(--size-17);
 }
 
-.uai-Top-bar {
+/* Outer parent to nested children without children */
+.top-bar {
+  /* Positioning */
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--top-bar-gap-2);
-  width: 100%;
-  padding: var(--top-bar-padding);
-  background: var(--theme-Top-bar-background, --bg);
-  backdrop-filter: var(--theme-Top-bar-backdrop-filter, none);
-  filter: var(--theme-Top-bar-filter);
-  transition: all 0.2s ease-out;
 
+  /* Display */
+  display: flex;
+
+  /* Size */
+  width: 100%;
+  /* horizontal first */
+
+  /* Align */
+  justify-content: space-between;
+  /* horizontal first */
+  align-items: center;
+  /* then vertical */
+
+  /* Space */
+  padding: var(--uai--top-bar--vertical-padding) var(--uai--top-bar--horizontal-padding);
+  /* outside to inside */
+  gap: var(--uai--top-bar--gap--md);
+
+  /* Visual */
+  background: var(--top-bar--background);
+  /* front to back */
+  backdrop-filter: var(--top-bar--backdrop-filter, none);
+  filter: var(--top-bar--filter);
+
+  /* Shared styles first */
   .leading,
   .center,
   .trailing {
+    /* Display */
     display: flex;
+
+    /* Align */
     justify-content: center;
+    /* horizontal first */
     align-items: center;
-    gap: var(--top-bar-gap-2);
+    /* then vertical */
+
+    /* Space */
+    gap: var(--uai--top-bar--gap--md);
   }
 
+  /* Then specific styles */
   .center {
+    /* Positioning */
     position: absolute;
     left: 50%;
+    /* horizontal first */
     top: 50%;
+    /* then vertical */
     transform: translate(-50%, -50%);
+
+    /* Size */
     max-width: var(--6-column);
-    color: var(--theme-Top-bar-title-color, --fg);
-    font-weight: var(--theme-Top-bar-title-weight, 400);
-    font-size: var(--top-bar-title);
+
+    /* Typography */
+    font-size: var(--uai--top-bar--title-size);
+    /* size first */
     line-height: 1;
+    font-weight: var(--top-bar--title-weight, 400);
+    /* then style */
+    color: var(--top-bar--title-color);
+    /* then color */
   }
 }

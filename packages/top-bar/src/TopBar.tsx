@@ -21,7 +21,7 @@ const TopBar = forwardRef<HTMLDivElement, TopBar>(({ children }, ref) => {
   const showTitle = true;
 
   return (
-    <div ref={ref} className="uai-Top-bar">
+    <div ref={ref} className="top-bar">
       <ButtonContext.Provider value={{ size: "32", variant: "plan" }}>
         <div className="leading">
           <Button>
