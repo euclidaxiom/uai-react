@@ -22,7 +22,7 @@ const TopBar = forwardRef<HTMLDivElement, TopBar>(({ children }, ref) => {
 
   return (
     <div ref={ref} className="uai-Top-bar">
-      <ButtonContext.Provider value={{ size: "32" }}>
+      <ButtonContext.Provider value={{ size: "32", variant: "plan" }}>
         <div className="leading">
           <Button>
             <ButtonIcon>
@@ -30,7 +30,7 @@ const TopBar = forwardRef<HTMLDivElement, TopBar>(({ children }, ref) => {
             </ButtonIcon>
           </Button>
 
-          <div className="uai-Button-group--size32">
+          <div className="button-group--32">
             <Button>
               <ButtonIcon>
                 <span className="material-symbols-sharp">
@@ -47,9 +47,9 @@ const TopBar = forwardRef<HTMLDivElement, TopBar>(({ children }, ref) => {
             </Button>
           </div>
         </div>
-        <div className="center">{showTitle && <div>{children}</div>}</div>
-        <div className="trailing"></div>
       </ButtonContext.Provider>
+      <div className="center">{showTitle && <div>{children}</div>}</div>
+      <div className="trailing"></div>
     </div>
   );
 });

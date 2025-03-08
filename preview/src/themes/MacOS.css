@@ -19,15 +19,21 @@
 
 .window-content .top-bar-container,
 .window-content .top-bar-container--on-scroll {
-  --theme-Button-color: #00000080;
-  --theme-Top-bar-title-color: #000000D9;
-  --theme-Top-bar-title-weight: 600;
-
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 999;
+}
+
+.MacOS-theme {
+  --button--color: #00000080;
+  --button--background--plan--hover: #0000000D;
+  --button--border-radius--32: 6px;
+  --button--font-weight: 400;
+  --button--cursor: default;
+  --theme-Top-bar-title-color: #000000D9;
+  --theme-Top-bar-title-weight: 600;
 }
 
 .MacOS-theme .top-bar-container {

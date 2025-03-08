@@ -19,11 +19,13 @@ import "./Button.css";
 //  BUTTON
 
 interface ButtonContext {
-  size: string;
+  size: "32";
+  variant: "plan";
 }
 
 const ButtonContext = createContext<ButtonContext>({
   size: "32",
+  variant: "plan",
 });
 
 type ButtonChildren =
@@ -70,20 +72,22 @@ function parseButtonChildren(
 }
 
 interface Button extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: string;
+  size?: ButtonContext["size"];
+  variant?: ButtonContext["variant"];
   children: ButtonChildren;
 }
 
 const Button = forwardRef<HTMLButtonElement, Button>(
-  ({ size, children, ...props }, ref) => {
+  ({ size, variant, children, ...props }, ref) => {
     const buttonContext = useContext(ButtonContext);
     const buttonSize = buttonContext.size || size || "32";
+    const buttonVariant = buttonContext.variant || variant || "plan";
     const { icon, text, trailingIcon } = parseButtonChildren(children);
     const hasLabel = !!icon || !!text;
 
     return (
       <button
-        className={`uai-Button uai-Button--size${buttonSize}`}
+        className={`button button--${buttonSize} button--${buttonVariant}`}
         ref={ref}
         {...props}
       >
@@ -132,7 +136,7 @@ interface ButtonIcon extends React.HTMLAttributes<HTMLSpanElement> {
 const ButtonIcon = forwardRef<HTMLSpanElement, ButtonIcon>(
   ({ children, ...props }, ref) => {
     return (
-      <span ref={ref} className="uai-Button-icon" {...props}>
+      <span ref={ref} className="icon" {...props}>
         {children}
       </span>
     );
@@ -152,7 +156,7 @@ interface ButtonTrailingIcon extends React.HTMLAttributes<HTMLSpanElement> {
 const ButtonTrailingIcon = forwardRef<HTMLSpanElement, ButtonTrailingIcon>(
   ({ children, ...props }, ref) => {
     return (
-      <span ref={ref} className="uai-Button-icon--trailing" {...props}>
+      <span ref={ref} className="trailing-icon" {...props}>
         {children}
       </span>
     );

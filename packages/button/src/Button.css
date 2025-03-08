@@ -1,30 +1,38 @@
 @import '@uai-ui-react/base-css/src/index.css';
 
 :root {
-  --Button--size32-horizontal-padding: var(--size-14);
-  --Button--size32-vertical-padding: var(--size-13);
-  --Button--size32-icon: var(--size-17);
-  --Button--size32-text: var(--size-16);
-  --Button--size32-icon--trailing: var(--size-15);
-  --Button--size32-gap: var(--size-6);
-  --Button--size32-gap--label: var(--size-10);
+  --uai--button--vertical-padding--32: var(--size-13);
+  --uai--button--horizontal-padding--32: var(--size-14);
+  --uai--button--gap--32: var(--size-6);
+  --uai--button--label-gap--32: var(--size-10);
+  --uai--button--icon-size--32: var(--size-17);
+  --uai--button--text-size--32: var(--size-16);
+  --uai--button--trailing-icon-size--32: var(--size-15);
+  --uai--button--group-gap--32: var(--size-11);
 }
 
-.uai-Button {
+.button {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* min-width: 44px; */
   font-family: inherit;
-  /* font-weight: 600; */
-  border-radius: var(--theme-Button-border-radius, 0px);
-  color: var(--theme-Button-color, --fg);
-  background-color: var(--theme-Button-background-color, --bg);
-  cursor: pointer;
+  font-weight: var(--button--font-weight);
+  color: var(--button--color);
+  cursor: var(--button--cursor);
 }
 
-.uai-Button::after {
+.button--plan {
+  background: var(--button--background--plan);
+  color: var(--button--color--plan, --button--color);
+}
+
+.button--plan:hover {
+  background: var(--button--background--plan--hover);
+  color: var(--button--color--plan--hover, --button--color--hover);
+}
+
+.button::after {
   content: '';
   position: absolute;
   top: 50%;
@@ -37,60 +45,68 @@
   background: transparent;
 }
 
-.uai-Button-icon,
-.uai-Button-icon--trailing {
+.button .icon,
+.button .trailing-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   color: currentColor;
 }
 
-.uai-Button--size32 .label {
+.button--32 {
+  padding: var(--uai--button--vertical-padding--32) var(--uai--button--horizontal-padding--32);
+  gap: var(--uai--button--gap--32);
+  line-height: var(--uai--button--icon-size--32);
+  letter-spacing: var(--button--letter-spacing--32);
+  border-radius: var(--button--border-radius--32, --button--border-radius);
+  /* O fallback pro border-radius geral não está funcionando */
+  mask-image: linear-gradient(white, white);
+  -webkit-mask-image: -webkit-linear-gradient(white, white);
+}
+
+.button--32 .label {
   display: flex;
   align-items: center;
   justify-content: center;
+  letter-spacing: var(--button--letter-spacing--32);
+  font-size: var(--uai--button--text-size--32);
+  gap: var(--uai--button--label-gap--32);
 }
 
-.uai-Button--size32 {
-  padding: var(--Button--size32-vertical-padding) var(--Button--size32-horizontal-padding);
-  gap: var(--Button--size32-gap);
-  font-size: var(--Button--size32-text);
-  line-height: var(--Button--size32-icon);
-  /* letter-spacing: -0.005em; */
-  border-radius: var(--theme-Button--size32-border-radius, --theme-Button-border-radius, 0px);
-
-  .label {
-    gap: var(--Button--size32-gap--label);
-  }
+.button--32 .icon {
+  width: var(--uai--button--icon-size--32);
+  height: var(--uai--button--icon-size--32);
 }
 
-.uai-Button--size32 .uai-Button-icon {
-  width: var(--Button--size32-icon);
-  height: var(--Button--size32-icon);
+.button--32 .icon * {
+  font-size: var(--uai--button--icon-size--32);
+  color: var(--button--icon-color--plan, --button--icon-color, currentColor);
 }
 
-.uai-Button--size32 .uai-Button-icon * {
-  font-size: var(--Button--size32-icon);
+.button--32:hover .icon * {
+  color: var(--button--icon-color--plan--hover, --button--icon-color--hover, currentColor);
 }
 
-.uai-Button--size32 .uai-Button-icon--trailing {
-  width: var(--Button--size32-icon--trailing);
-  height: var(--Button--size32-icon);
+.button--32 .trailing-icon {
+  width: var(--uai--button--trailing-icon-size--32);
+  height: var(--uai--button--icon-size--32);
 }
 
-.uai-Button--size32 .uai-Button-icon--trailing * {
-  font-size: var(--Button--size32-icon--trailing);
+.button--32 .trailing-icon * {
+  font-size: var(--uai--button--trailing-icon-size--32);
+  color: currentColor;
 }
 
-.uai-Button--size32 .uai-Button-icon svg,
-.uai-Button--size32 .uai-Button-icon--trailing svg {
+.button--32 .icon svg,
+.button--32 .trailing-icon svg {
   width: 100%;
   height: 100%;
+  color: currentColor;
 }
 
-.uai-Button-group--size32 {
+.button-group--32 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--size-11);
+  gap: var(--uai--button--group-gap--32);
 }
