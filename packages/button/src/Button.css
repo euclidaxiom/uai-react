@@ -19,7 +19,7 @@
   font-family: inherit;
   font-weight: var(--button--font-weight);
   color: var(--button--color);
-  cursor: var(--button--cursor);
+  cursor: var(--button--cursor, pointer);
 }
 
 .button--plan {
