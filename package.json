@@ -5,7 +5,8 @@
   "type": "module",
   "workspaces": [
     "packages/*",
-    "preview"
+    "preview",
+    "prototype"
   ],
   "scripts": {
     "preview": "bun run --cwd preview dev",
