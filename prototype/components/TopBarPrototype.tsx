@@ -2,14 +2,12 @@
 
 import { TopBar } from "@uai-ui-react/top-bar";
 import { useContext, useEffect, useRef, useState } from "react";
-import { ThemeContext } from "./Environment";
 
 function TopBarPrototype() {
   const topBarRef = useRef<HTMLDivElement>(null);
   const contentAreaRef = useRef<HTMLDivElement>(null);
   const [topBarHeight, setTopBarHeight] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     const updateTopBarHeight = () => {
@@ -50,10 +48,7 @@ function TopBarPrototype() {
   }, []);
 
   return (
-    <div
-      className={`theme--${theme}`}
-      style={{ width: "100%", height: "100%", overflow: "hidden" }}
-    >
+    <div style={{ width: "100%", height: "100%", overflow: "hidden" }}>
       <div className="window">
         <div className="window-content">
           <div
@@ -62,7 +57,7 @@ function TopBarPrototype() {
             }
             ref={topBarRef}
           >
-            <TopBar>Title</TopBar>
+            <TopBar pageTitle="Title" />
           </div>
           <div
             className="content-area"

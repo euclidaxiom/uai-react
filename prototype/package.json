@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@uai-ui-react/top-bar": "workspace:*",
+    "@uai-ui-react/app-context": "workspace:*",
     "@uai-ui-react/base-css": "workspace:*",
+    "@uai-ui-react/prototype-themes": "workspace:*",
+    "@uai-ui-react/top-bar": "workspace:*",
+    "lucide-react": "^0.479.0",
+    "next": "15.2.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.2.1"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "typescript": "^5",

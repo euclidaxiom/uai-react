@@ -1,5 +1,5 @@
 {
-  "name": "@uai-ui-react/base-css",
+  "name": "@uai-ui-react/prototype-themes",
   "version": "0.0.1",
   "style": "./src/index.css",
   "main": "./src/index.css",

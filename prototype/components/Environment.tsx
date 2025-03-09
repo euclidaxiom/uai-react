@@ -1,7 +1,10 @@
 "use client";
 
-import React, { forwardRef, useEffect, useRef, createContext } from "react";
+import React, { forwardRef, useEffect, useRef } from "react";
+import { ThemeContext } from "@uai-ui-react/app-context";
 import Image from "next/image";
+import "@uai-ui-react/prototype-themes";
+import { defaultIcons } from "./DefaultIcons";
 
 //     |\|\
 //    /nn /\______
@@ -77,8 +80,11 @@ const Environment = forwardRef<HTMLDivElement, Environment>(
     }, [width, aspectRatio, xMarginPercentage, yMarginPixels]);
 
     return (
-      <ThemeContext.Provider value={{ theme: `${theme}` }}>
+      <ThemeContext.Provider
+        value={{ theme: `${theme}`, defaultIcons: defaultIcons }}
+      >
         <div
+          className={`theme--${theme}`}
           style={{
             position: "fixed",
             top: 0,
@@ -100,7 +106,6 @@ const Environment = forwardRef<HTMLDivElement, Environment>(
               transformOrigin: "center bottom",
               transition: "transform 0.2s ease-out",
               overflow: "visible",
-              backgroundColor: "black",
             }}
           >
             {children}
@@ -135,16 +140,4 @@ Environment.displayName = "Environment";
 
 //  ///////////////////////////////////////////////////////////////////////////
 
-//  THEME CONTEXT
-
-interface ThemeContext {
-  theme: String;
-}
-
-const ThemeContext = createContext<ThemeContext>({
-  theme: "none",
-});
-
-//  ///////////////////////////////////////////////////////////////////////////
-
-export { Environment, ThemeContext };
+export { Environment };

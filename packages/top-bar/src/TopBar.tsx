@@ -1,6 +1,8 @@
-import React, { ReactNode, forwardRef, useContext } from "react";
+"use client";
+
+import React, { forwardRef, useContext } from "react";
 import { Button, ButtonIcon, ButtonContext } from "@uai-ui-react/button";
-import { AppContext, LayoutContext } from "@uai-ui-react/app-context";
+import { ThemeContext } from "@uai-ui-react/app-context";
 
 import "./TopBar.css";
 
@@ -14,45 +16,38 @@ import "./TopBar.css";
 //  TOP BAR
 
 interface TopBar extends React.HTMLAttributes<HTMLDivElement> {
-  children: ReactNode;
+  pageTitle: string;
+  showTitle?: boolean;
 }
 
-const TopBar = forwardRef<HTMLDivElement, TopBar>(({ children }, ref) => {
-  const showTitle = true;
+const TopBar = forwardRef<HTMLDivElement, TopBar>(
+  ({ pageTitle, showTitle = true }, ref) => {
+    const { defaultIcons } = useContext(ThemeContext);
 
-  return (
-    <div ref={ref} className="top-bar">
-      <ButtonContext.Provider value={{ size: "32", variant: "plan" }}>
-        <div className="leading">
-          <Button>
-            <ButtonIcon>
-              <span className="material-symbols-sharp">dock_to_right</span>
-            </ButtonIcon>
-          </Button>
+    return (
+      <div ref={ref} className="top-bar">
+        <ButtonContext.Provider value={{ size: "32", variant: "plan" }}>
+          <div className="leading">
+            <Button>
+              <ButtonIcon>{defaultIcons.leftBar}</ButtonIcon>
+            </Button>
 
-          <div className="button-group--32">
-            <Button>
-              <ButtonIcon>
-                <span className="material-symbols-sharp">
-                  arrow_back_ios_new
-                </span>
-              </ButtonIcon>
-            </Button>
-            <Button>
-              <ButtonIcon>
-                <span className="material-symbols-sharp">
-                  arrow_forward_ios
-                </span>
-              </ButtonIcon>
-            </Button>
+            <div className="button-group--32">
+              <Button>
+                <ButtonIcon>{defaultIcons.chevronBack}</ButtonIcon>
+              </Button>
+              <Button>
+                <ButtonIcon>{defaultIcons.chevronForward}</ButtonIcon>
+              </Button>
+            </div>
           </div>
-        </div>
-      </ButtonContext.Provider>
-      <div className="center">{showTitle && <div>{children}</div>}</div>
-      <div className="trailing"></div>
-    </div>
-  );
-});
+        </ButtonContext.Provider>
+        {showTitle && <div className="center">{pageTitle}</div>}
+        <div className="trailing"></div>
+      </div>
+    );
+  }
+);
 
 TopBar.displayName = "TopBar";
 

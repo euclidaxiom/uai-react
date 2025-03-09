@@ -1,4 +1,9 @@
-import { ReactElement, forwardRef, createContext } from "react";
+import React, {
+  ReactElement,
+  forwardRef,
+  createContext,
+  ReactNode,
+} from "react";
 
 //     |\|\
 //    /nn /\______
@@ -10,7 +15,7 @@ import { ReactElement, forwardRef, createContext } from "react";
 //  APP CONTEXT
 
 interface AppContext {
-  os: "apple" | "windows" | "linux" | "android" | undefined;
+  os: "mac" | "ios" | "windows" | "linux" | "android" | undefined;
 }
 
 const AppContext = createContext<AppContext>({
@@ -26,12 +31,9 @@ const AppContextProvider = forwardRef<HTMLDivElement, AppContextProvider>(
     const getOS = () => {
       const userAgent = navigator.userAgent.toLowerCase();
 
-      if (
-        userAgent.includes("mac") ||
-        userAgent.includes("iphone") ||
-        userAgent.includes("ipad")
-      )
-        return "apple";
+      if (userAgent.includes("mac")) return "mac";
+      if (userAgent.includes("iphone") || userAgent.includes("ipad"))
+        return "ios";
       if (userAgent.includes("win")) return "windows";
       if (userAgent.includes("linux")) return "linux";
       if (userAgent.includes("android")) return "android";
@@ -41,11 +43,7 @@ const AppContextProvider = forwardRef<HTMLDivElement, AppContextProvider>(
 
     const os = getOS();
 
-    return (
-      <AppContext.Provider value={{ os }} ref={ref}>
-        {children}
-      </AppContext.Provider>
-    );
+    return <AppContext.Provider value={{ os }}>{children}</AppContext.Provider>;
   }
 );
 
@@ -65,4 +63,34 @@ const LayoutContext = createContext<LayoutContext>({
 
 //  ///////////////////////////////////////////////////////////////////////////
 
-export { AppContext, AppContextProvider, LayoutContext };
+//  THEME CONTEXT
+
+type DefaultIcons = {
+  chevronBack: ReactNode;
+  chevronForward: ReactNode;
+  leftBar: ReactNode;
+};
+
+interface ThemeContext {
+  theme: String;
+  defaultIcons: DefaultIcons;
+}
+
+const ThemeContext = createContext<ThemeContext>({
+  theme: "none",
+  defaultIcons: {
+    chevronBack: <span>●</span>,
+    chevronForward: <span>●</span>,
+    leftBar: <span>●</span>,
+  },
+});
+
+//  ///////////////////////////////////////////////////////////////////////////
+
+export {
+  AppContext,
+  AppContextProvider,
+  LayoutContext,
+  ThemeContext,
+  type DefaultIcons,
+};

@@ -1,1 +1,5 @@
-export { AppContext, AppContextProvider, LayoutContext } from "./AppContext"
+export { AppContext,
+  AppContextProvider,
+  LayoutContext,
+  ThemeContext,
+  type DefaultIcons } from "./AppContext"

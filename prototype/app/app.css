@@ -1,4 +1,4 @@
-@import '@uai-ui-react/base-css/src/index.css';
+@import '@uai-ui-react/base-css';
 
 .app {
   display: flex;
@@ -6,18 +6,4 @@
   width: 100%;
   height: 100%;
   overflow-y: hidden;
-}
-
-.material-symbols {
-  font-family: 'Material Symbols Sharp';
-  font-weight: inherit;
-  font-style: normal;
-  font-size: inherit;
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
 }
