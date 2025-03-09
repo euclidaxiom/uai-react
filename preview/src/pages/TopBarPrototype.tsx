@@ -1,10 +1,12 @@
+import { ThemeContext } from "../components/ThemeContext";
 import ZoomContainer from "../components/ZoomContainer";
 import sequoiaWallpaper from "../public/macos-sequoia-wallpaper.png";
 import TopBarPage from "./TopBarPage";
+import "../themes/MacOS.css";
 
 function TopBarPrototype() {
   return (
-    <>
+    <ThemeContext.Provider value={{ theme: "macos" }}>
       <ZoomContainer>
         <TopBarPage />
       </ZoomContainer>
@@ -22,7 +24,7 @@ function TopBarPrototype() {
           zIndex: -1,
         }}
       ></div>
-    </>
+    </ThemeContext.Provider>
   );
 }
 

@@ -1,12 +1,13 @@
 import { TopBar } from "@uai-ui-react/top-bar";
-import "../themes/MacOS.css";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { ThemeContext } from "../components/ThemeContext";
 
 function TopBarPage() {
   const topBarRef = useRef<HTMLDivElement>(null);
   const contentAreaRef = useRef<HTMLDivElement>(null);
   const [topBarHeight, setTopBarHeight] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     const updateTopBarHeight = () => {
@@ -48,7 +49,7 @@ function TopBarPage() {
 
   return (
     <div
-      className="MacOS-theme"
+      className={`theme--${theme}`}
       style={{ width: "100%", height: "100%", overflow: "hidden" }}
     >
       <div className="window">
@@ -66,7 +67,13 @@ function TopBarPage() {
             style={{ marginTop: `${topBarHeight}px` }}
             ref={contentAreaRef}
           >
-            <p style={{ width: "40.0000000002%", marginTop: "64px" }}>
+            <p
+              style={{
+                width: "40.0000000002%",
+                marginTop: "64px",
+                color: "transparent",
+              }}
+            >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
               risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
               nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
