@@ -8,7 +8,8 @@
     "preview"
   ],
   "scripts": {
-    "preview": "bun run --cwd preview dev"
+    "preview": "bun run --cwd preview dev",
+    "dev": "bun run --cwd prototype dev"
   },
   "devDependencies": {
     "@types/bun": "latest",
