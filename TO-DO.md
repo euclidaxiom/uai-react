@@ -1,0 +1,1 @@
+- Fix prototype window clip (are clipping the shadow).

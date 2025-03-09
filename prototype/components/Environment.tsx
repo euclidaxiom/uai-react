@@ -103,7 +103,7 @@ const Environment = forwardRef<HTMLDivElement, Environment>(
             ref={designCanvasRef}
             style={{
               transform: "scale(0)",
-              transformOrigin: "center bottom",
+              transformOrigin: "center center",
               transition: "transform 0.2s ease-out",
               overflow: "visible",
             }}
