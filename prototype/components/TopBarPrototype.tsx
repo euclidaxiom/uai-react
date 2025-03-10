@@ -68,7 +68,7 @@ function TopBarPrototype() {
               style={{
                 width: "40.0000000002%",
                 marginTop: "64px",
-                color: "white",
+                color: "transparent",
               }}
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non

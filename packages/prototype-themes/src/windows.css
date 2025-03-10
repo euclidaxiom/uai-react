@@ -55,14 +55,9 @@
     }
 
     /* Then specific styles */
-    .top-bar-container {
-      --top-bar--background: transparent;
-    }
-
+    .top-bar-container,
     .top-bar-container--on-scroll {
-      --top-bar--background: #EAEAEACC;
-      --top-bar--backdrop-filter: blur(30px);
-      --top-bar--filter: drop-shadow(0px 1px 0px #0000001A) drop-shadow(0px .5px 0px #0000001A);
+      --top-bar--background: transparent;
     }
 
     .content-area {

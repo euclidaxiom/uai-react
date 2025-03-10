@@ -1,6 +1,7 @@
 ## Pototype
 
 - Fix prototype window clip (are clipping the shadow).
+- Do the scroll bar styles.
 
 ### VisionOS
 
