@@ -1,0 +1,2 @@
+- bun dev
+- localhost:3000/top-bar
