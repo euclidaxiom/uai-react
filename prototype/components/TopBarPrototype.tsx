@@ -61,14 +61,14 @@ function TopBarPrototype() {
           </div>
           <div
             className="content-area"
-            style={{ marginTop: `${topBarHeight}px` }}
+            style={{ paddingTop: `${topBarHeight}px` }}
             ref={contentAreaRef}
           >
             <p
               style={{
                 width: "40.0000000002%",
                 marginTop: "64px",
-                color: "transparent",
+                color: "white",
               }}
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non

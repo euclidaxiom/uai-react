@@ -1,1 +1,2 @@
 - Fix prototype window clip (are clipping the shadow).
+- Blend modes are not working at all.

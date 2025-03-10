@@ -36,10 +36,26 @@
   gap: var(--uai--top-bar--gap--md);
 
   /* Visual */
-  background: var(--top-bar--background);
-  /* front to back */
-  backdrop-filter: var(--top-bar--backdrop-filter, none);
   filter: var(--top-bar--filter);
+
+  &::before {
+    content: "";
+    /* Positioning */
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* Size */
+    width: 100%;
+    height: 100%;
+    /* Visual */
+    background: var(--top-bar--background);
+    background-blend-mode: var(--top-bar--background-blend-mode);
+    /* front to back */
+    backdrop-filter: var(--top-bar--backdrop-filter, none);
+    -webkit-backdrop-filter: var(--top-bar--backdrop-filter, none);
+    mask: var(--top-bar--mask, none);
+    -webkit-mask: var(--top-bar--mask, none);
+  }
 
   /* Shared styles first */
   .leading,

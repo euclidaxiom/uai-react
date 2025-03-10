@@ -18,18 +18,19 @@
   justify-content: center;
   font-family: inherit;
   font-weight: var(--button--font-weight);
-  color: var(--button--color);
   cursor: var(--button--cursor, pointer);
 }
 
 .button--plan {
   background: var(--button--background--plan);
-  color: var(--button--color--plan, var(--button--color));
+  background-blend-mode: var(--button--background-blend-mode--plan);
+  color: var(--button--color--plan);
 }
 
 .button--plan:hover {
-  background: var(--button--background--plan--hover);
-  color: var(--button--color--plan--hover, var(--button--color--hover));
+  background: var(--button--background--plan--hover, var(--button--background--plan));
+  background-blend-mode: var(--button--background-blend-mode--plan--hover, var(--button--background-blend-mode--plan));
+  color: var(--button--color--plan--hover, var(--button--color--plan));
 }
 
 .button::after {
