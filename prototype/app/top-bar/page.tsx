@@ -5,7 +5,7 @@ import { Environment } from "@/components/Environment";
 import { TopBarPrototype } from "@/components/TopBarPrototype";
 
 export default function Page() {
-  const [theme, setTheme] = useState<"macos" | "visionos">("macos");
+  const [theme, setTheme] = useState<"macos" | "visionos" | "windows">("macos");
 
   return (
     <>
@@ -41,8 +41,6 @@ export default function Page() {
                 padding: "8px 16px",
                 fontSize: "14px",
                 fontWeight: "500",
-                borderTopRightRadius: "6px",
-                borderBottomRightRadius: "6px",
                 backgroundColor: theme === "visionos" ? "#0066ff" : "white",
                 color: theme === "visionos" ? "white" : "#333",
                 border: theme === "visionos" ? "none" : "1px solid #ddd",
@@ -51,6 +49,23 @@ export default function Page() {
               onClick={() => setTheme("visionos")}
             >
               visionOS
+            </button>
+            <button
+              type="button"
+              style={{
+                padding: "8px 16px",
+                fontSize: "14px",
+                fontWeight: "500",
+                borderTopRightRadius: "6px",
+                borderBottomRightRadius: "6px",
+                backgroundColor: theme === "windows" ? "#0066ff" : "white",
+                color: theme === "windows" ? "white" : "#333",
+                border: theme === "windows" ? "none" : "1px solid #ddd",
+                cursor: "pointer",
+              }}
+              onClick={() => setTheme("windows")}
+            >
+              Windows
             </button>
           </div>
         </div>

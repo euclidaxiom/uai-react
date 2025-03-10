@@ -1,0 +1,80 @@
+.theme--windows {
+  /* TOP BAR */
+  /* Typography */
+  --top-bar--title-weight: 600;
+  --top-bar--title-color: rgba(0, 0, 0, 0.8956);
+
+  /* BUTTON */
+  /* Shape */
+  --button--border-radius--32: 3px;
+  /* Typography */
+  --button--font-weight: 400;
+  --button--color--plan: rgba(0, 0, 0, 0.8956);
+  /* Visual */
+  --button--background--plan--hover: rgba(0, 0, 0, 0.0373);
+  /* Other */
+  --button--cursor: default;
+
+  /* Outer parent to nested children without children */
+  .window {
+    /* Size */
+    width: 100%;
+    height: 100%;
+    /* Visual */
+    filter: drop-shadow(0px 32px 64px #00000047) drop-shadow(0px 2px 21px #00000038);
+  }
+
+  .window-content {
+    /* Positioning */
+    position: relative;
+    /* Size */
+    width: 100%;
+    height: 100%;
+    /* Shape */
+    border-radius: 7px;
+    mask-image: linear-gradient(white, white);
+    -webkit-mask-image: -webkit-linear-gradient(white, white);
+    /* Scroll */
+    overflow: hidden;
+    /* Visual */
+    outline: 1px solid #75757566;
+    background-color: #F0F3F9;
+    box-shadow: inset 0px 0px 3px #ffffff1a;
+
+    /* Shared styles first */
+    .top-bar-container,
+    .top-bar-container--on-scroll {
+      /* Positioning */
+      position: absolute;
+      left: 0;
+      /* horizontal first */
+      top: 0;
+      z-index: 999;
+      /* Size */
+      width: 100%;
+    }
+
+    /* Then specific styles */
+    .top-bar-container {
+      --top-bar--background: transparent;
+    }
+
+    .top-bar-container--on-scroll {
+      --top-bar--background: #EAEAEACC;
+      --top-bar--backdrop-filter: blur(30px);
+      --top-bar--filter: drop-shadow(0px 1px 0px #0000001A) drop-shadow(0px .5px 0px #0000001A);
+    }
+
+    .content-area {
+      /* Display */
+      display: flex;
+      /* Size */
+      width: 100%;
+      height: 100%;
+      /* Align */
+      justify-content: center;
+      /* Scroll */
+      overflow-y: scroll;
+    }
+  }
+}

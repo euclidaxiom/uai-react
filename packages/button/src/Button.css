@@ -25,12 +25,14 @@
   background: var(--button--background--plan);
   background-blend-mode: var(--button--background-blend-mode--plan);
   color: var(--button--color--plan);
+  border: var(--button--border--plan);
 }
 
 .button--plan:hover {
   background: var(--button--background--plan--hover, var(--button--background--plan));
   background-blend-mode: var(--button--background-blend-mode--plan--hover, var(--button--background-blend-mode--plan));
   color: var(--button--color--plan--hover, var(--button--color--plan));
+  border: var(--button--border--plan--hover, var(--button--border--plan));
 }
 
 .button::after {
