@@ -53,9 +53,16 @@ const Environment = forwardRef<HTMLDivElement, Environment>(
 
       const viewportWidth = window.innerWidth;
 
+      const pageWidth = (): number => {
+        if (viewportWidth > 2000) {
+          return 2000;
+        }
+        return viewportWidth;
+      };
+
       const xMargin = (pageMargin / 100) * 3;
 
-      const xRenderSize = viewportWidth - viewportWidth * xMargin;
+      const xRenderSize = pageWidth() - pageWidth() * xMargin;
 
       const scaleValue = xRenderSize / windowWidth;
 
