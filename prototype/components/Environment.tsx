@@ -5,6 +5,7 @@ import { ThemeContext } from "@uai-ui-react/app-context";
 import Image from "next/image";
 import "@uai-ui-react/prototype-themes";
 import { defaultIcons } from "./DefaultIcons";
+import "./Environment.css";
 
 //     |\|\
 //    /nn /\______
@@ -18,52 +19,45 @@ import { defaultIcons } from "./DefaultIcons";
 interface Environment extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   theme: string;
-  width?: number;
-  aspectRatio?: string;
-  xMarginPercentage?: number;
-  yMarginPixels?: number;
 }
 
 const Environment = forwardRef<HTMLDivElement, Environment>(
-  (
-    {
-      children,
-      theme,
-      width = 1357.65,
-      aspectRatio = "2/1",
-      xMarginPercentage = 6.6666666667,
-      yMarginPixels = 128,
-      ...props
-    },
-    ref
-  ) => {
-    const designCanvasRef = useRef<HTMLDivElement>(null);
+  ({ children, theme }, ref) => {
+    const windowRef = useRef<HTMLDivElement>(null);
+
+    const windowWidth = 1357.65;
+    const windowAspectRatio = 2;
+    const pageMargin = 13.3333333334;
+
+    const desktopDisplayAspectRatio = "1.7796160025";
+    const desktopDisplayWidth = "104.4385396571";
+    const desktopDisplayTop = "2.9175843598";
+
+    const device = (() => {
+      if (theme === "macos" || theme === "windows") {
+        return "desktop";
+      }
+      if (theme === "visionos") {
+        return "space";
+      }
+      if (theme === "ipados") {
+        return "ipad";
+      }
+      return "";
+    })();
 
     const calculateAndApplyScale = () => {
-      if (!designCanvasRef.current) return;
-
-      designCanvasRef.current.style.width = `${width}px`;
-      designCanvasRef.current.style.aspectRatio = `${aspectRatio}`;
+      if (!windowRef.current) return;
 
       const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
 
-      const height = width / 2;
-
-      const xMargin = (xMarginPercentage / 100) * 2;
-      const yMargin = yMarginPixels * 2;
+      const xMargin = (pageMargin / 100) * 3;
 
       const xRenderSize = viewportWidth - viewportWidth * xMargin;
-      const yRenderSize = viewportHeight - yMargin;
 
-      const xScaleValue = xRenderSize / width;
-      const yScaleValue = yRenderSize / height;
+      const scaleValue = xRenderSize / windowWidth;
 
-      if (height * xScaleValue > yRenderSize) {
-        designCanvasRef.current.style.transform = `scale(${yScaleValue})`;
-      } else {
-        designCanvasRef.current.style.transform = `scale(${xScaleValue})`;
-      }
+      windowRef.current.style.transform = `translate(-50%, -50%) scale(${scaleValue})`;
     };
 
     useEffect(() => {
@@ -77,59 +71,83 @@ const Environment = forwardRef<HTMLDivElement, Environment>(
         clearTimeout(initialTimer);
         window.removeEventListener("resize", calculateAndApplyScale);
       };
-    }, [width, aspectRatio, xMarginPercentage, yMarginPixels]);
+    }, [pageMargin, windowWidth]);
 
     return (
       <ThemeContext.Provider
         value={{ theme: `${theme}`, defaultIcons: defaultIcons }}
       >
-        <div
-          className={`theme--${theme}`}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            overflow: "hidden",
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          ref={ref}
-          {...props}
-        >
+        <div className="page" style={{ padding: `${pageMargin}%` }}>
           <div
-            ref={designCanvasRef}
+            className={`device theme--${theme}`}
             style={{
-              transform: "scale(0)",
-              transformOrigin: "center center",
-              transition: "transform 0.2s ease-out",
-              overflow: "visible",
+              width: "100%",
+              aspectRatio: `${desktopDisplayAspectRatio}/1`,
             }}
           >
-            {children}
+            <div className="screen">
+              <div
+                ref={windowRef}
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%) scale(0)",
+                  width: `${windowWidth}px`,
+                  aspectRatio: `${windowAspectRatio}/1`,
+                  transformOrigin: "center center",
+                  transition: "transform 0.2s ease-out",
+                  overflow: "visible",
+                  zIndex: 3,
+                }}
+              >
+                {children}
+              </div>
+              {device != "space" && (
+                <Image
+                  src={`/${theme}-wallpaper.png`}
+                  fill={true}
+                  alt="Wallpaper image"
+                  style={{
+                    objectFit: "cover",
+                    zIndex: 2,
+                  }}
+                />
+              )}
+            </div>
+            {device != "space" && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: "50%",
+                  width: `${desktopDisplayWidth}%`,
+                  transform: `translate(-50%, -${desktopDisplayTop}%)`,
+                }}
+              >
+                <Image
+                  src={`/${device}-display.png`}
+                  width={2870}
+                  height={2208}
+                  alt="Device display"
+                  style={{
+                    width: "100%",
+                  }}
+                />
+              </div>
+            )}
           </div>
-        </div>
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            overflow: "hidden",
-            width: "100%",
-            height: "100%",
-            zIndex: -1,
-          }}
-        >
-          <Image
-            src={`/${theme}-wallpaper.png`}
-            fill={true}
-            alt="Wallpaper image"
-            style={{
-              objectFit: "cover",
-            }}
-          />
+          {device == "space" && (
+            <Image
+              src="/space-environment.png"
+              fill={true}
+              alt="Wallpaper image"
+              style={{
+                objectFit: "cover",
+                zIndex: -1,
+              }}
+            />
+          )}
         </div>
       </ThemeContext.Provider>
     );
