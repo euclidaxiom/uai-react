@@ -29,9 +29,11 @@ const Environment = forwardRef<HTMLDivElement, Environment>(
     const windowAspectRatio = 2;
     const pageMargin = 13.3333333334;
 
-    const desktopDisplayAspectRatio = "1.7796160025";
-    const desktopDisplayWidth = "104.4385396571";
-    const desktopDisplayTop = "2.9175843598";
+    const desktopDisplayAspectRatio = 1.7730711044;
+    const desktopDisplayBezel = 104.4368600683;
+    const desktopDisplayTop = 2.7689030884;
+    const desktopDisplayWidth = 2448;
+    const desktopDisplayHeight = 1878;
 
     const device = (() => {
       if (theme === "macos" || theme === "windows") {
@@ -121,14 +123,14 @@ const Environment = forwardRef<HTMLDivElement, Environment>(
                   position: "absolute",
                   top: 0,
                   left: "50%",
-                  width: `${desktopDisplayWidth}%`,
+                  width: `${desktopDisplayBezel}%`,
                   transform: `translate(-50%, -${desktopDisplayTop}%)`,
                 }}
               >
                 <Image
                   src={`/${device}-display.png`}
-                  width={2870}
-                  height={2208}
+                  width={desktopDisplayWidth}
+                  height={desktopDisplayHeight}
                   alt="Device display"
                   style={{
                     width: "100%",
