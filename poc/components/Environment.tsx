@@ -35,19 +35,6 @@ const Environment = forwardRef<HTMLDivElement, Environment>(
     const desktopDisplayWidth = 2448;
     const desktopDisplayHeight = 1878;
 
-    const device = (() => {
-      if (theme === "macos" || theme === "windows") {
-        return "desktop";
-      }
-      if (theme === "visionos") {
-        return "space";
-      }
-      if (theme === "ipados") {
-        return "ipad";
-      }
-      return "";
-    })();
-
     const calculateAndApplyScale = () => {
       if (!windowRef.current) return;
 
@@ -72,7 +59,7 @@ const Environment = forwardRef<HTMLDivElement, Environment>(
     useEffect(() => {
       const initialTimer = setTimeout(() => {
         calculateAndApplyScale();
-      }, 300);
+      }, 1000);
 
       window.addEventListener("resize", calculateAndApplyScale);
 
@@ -112,51 +99,61 @@ const Environment = forwardRef<HTMLDivElement, Environment>(
               >
                 {children}
               </div>
-              {device != "space" && (
-                <Image
-                  src={`/${theme}-wallpaper.png`}
-                  fill={true}
-                  alt="Wallpaper image"
-                  style={{
-                    objectFit: "cover",
-                    zIndex: 2,
-                  }}
-                />
-              )}
-            </div>
-            {device != "space" && (
-              <div
+              <Image
+                src={`/macos-wallpaper.png`}
+                fill={true}
+                alt="Wallpaper image"
                 style={{
-                  position: "absolute",
-                  top: 0,
-                  left: "50%",
-                  width: `${desktopDisplayBezel}%`,
-                  transform: `translate(-50%, -${desktopDisplayTop}%)`,
+                  objectFit: "cover",
+                  zIndex: 2,
+                  opacity: `${theme === "macos" ? 1 : 0}`,
                 }}
-              >
-                <Image
-                  src={`/${device}-display.png`}
-                  width={desktopDisplayWidth}
-                  height={desktopDisplayHeight}
-                  alt="Device display"
-                  style={{
-                    width: "100%",
-                  }}
-                />
-              </div>
-            )}
-          </div>
-          {device == "space" && (
-            <Image
-              src="/space-environment.png"
-              fill={true}
-              alt="Wallpaper image"
+              />
+              <Image
+                src={`/windows-wallpaper.png`}
+                fill={true}
+                alt="Wallpaper image"
+                style={{
+                  objectFit: "cover",
+                  zIndex: 2,
+                  opacity: `${theme === "windows" ? 1 : 0}`,
+                }}
+              />
+            </div>
+            <div
               style={{
-                objectFit: "cover",
-                zIndex: -1,
+                position: "absolute",
+                top: 0,
+                left: "50%",
+                width: `${desktopDisplayBezel}%`,
+                transform: `translate(-50%, -${desktopDisplayTop}%)`,
+                opacity: `${theme === "visionos" ? 0 : 1}`,
               }}
-            />
-          )}
+            >
+              <Image
+                src={`/desktop-display.png`}
+                width={desktopDisplayWidth}
+                height={desktopDisplayHeight}
+                alt="Device display"
+                style={{
+                  width: "100%",
+                  opacity: `${
+                    theme === "macos" ? 1 : theme === "windows" ? 1 : 0
+                  }`,
+                }}
+              />
+            </div>
+          </div>
+          <Image
+            src="/space-environment.png"
+            fill={true}
+            alt="Wallpaper image"
+            style={{
+              objectFit: "cover",
+              zIndex: -1,
+              opacity: `${theme === "visionos" ? 1 : 0}`,
+            }}
+          />
         </div>
       </ThemeContext.Provider>
     );
