@@ -84,17 +84,11 @@ const Environment = forwardRef<HTMLDivElement, Environment>(
             <div className="screen">
               <div
                 ref={windowRef}
+                className="window-wrapper"
                 style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
                   transform: "translate(-50%, -50%) scale(0)",
                   width: `${windowWidth}px`,
                   aspectRatio: `${windowAspectRatio}/1`,
-                  transformOrigin: "center center",
-                  transition: "transform 0.2s ease-out",
-                  overflow: "visible",
-                  zIndex: 3,
                 }}
               >
                 {children}
@@ -150,7 +144,6 @@ const Environment = forwardRef<HTMLDivElement, Environment>(
             alt="Wallpaper image"
             style={{
               objectFit: "cover",
-              zIndex: -1,
               opacity: `${theme === "visionos" ? 1 : 0}`,
             }}
           />

@@ -1,7 +1,7 @@
 "use client";
 
 import { TopBar } from "@uai-ui-react/top-bar";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function TopBarPrototype() {
   const topBarRef = useRef<HTMLDivElement>(null);
@@ -48,66 +48,63 @@ function TopBarPrototype() {
   }, []);
 
   return (
-    <div style={{ width: "100%", height: "100%", overflow: "hidden" }}>
-      <div className="window">
-        <div className="window-content">
-          <div
-            className={
-              isScrolled ? "top-bar-container--on-scroll" : "top-bar-container"
-            }
-            ref={topBarRef}
+    <div className="window">
+      <div className="window-content">
+        <div
+          className={
+            isScrolled ? "top-bar-container--on-scroll" : "top-bar-container"
+          }
+          ref={topBarRef}
+        >
+          <TopBar pageTitle="Title" />
+        </div>
+        <div
+          className="content-area"
+          style={{ paddingTop: `${topBarHeight}px` }}
+          ref={contentAreaRef}
+        >
+          <p
+            style={{
+              width: "40.0000000002%",
+              marginTop: "64px",
+              color: "transparent",
+            }}
           >
-            <TopBar pageTitle="Title" />
-          </div>
-          <div
-            className="content-area"
-            style={{ paddingTop: `${topBarHeight}px` }}
-            ref={contentAreaRef}
-          >
-            <p
-              style={{
-                width: "40.0000000002%",
-                marginTop: "64px",
-                color: "transparent",
-              }}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-              risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
-              nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-              ligula massa, varius a, semper congue, euismod non, mi. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
-              Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-              ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-              ligula massa, varius a, semper congue, euismod non, mi. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
-              Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-              ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-              ligula massa, varius a, semper congue, euismod non, mi. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
-              Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-              ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-              ligula massa, varius a, semper congue, euismod non, mi. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
-              Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-              ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-              ligula massa, varius a, semper congue, euismod non, mi. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
-              Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-              ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-              ligula massa, varius a, semper congue, euismod non, mi. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
-              Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-              ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-              ligula massa, varius a, semper congue, euismod non, mi.
-              Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-              ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-              ligula massa, varius a, semper congue, euismod non, mi. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
-              Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-              ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-              ligula massa, varius a, semper congue, euismod non, mi.
-            </p>
-          </div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
+            risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
+            nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
+            ligula massa, varius a, semper congue, euismod non, mi. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit. Sed non risus.
+            Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
+            ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula
+            massa, varius a, semper congue, euismod non, mi. Lorem ipsum dolor
+            sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse
+            lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed,
+            dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius
+            a, semper congue, euismod non, mi. Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Sed non risus. Suspendisse lectus
+            tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+            Cras elementum ultrices diam. Maecenas ligula massa, varius a,
+            semper congue, euismod non, mi. Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Sed non risus. Suspendisse lectus
+            tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+            Cras elementum ultrices diam. Maecenas ligula massa, varius a,
+            semper congue, euismod non, mi. Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Sed non risus. Suspendisse lectus
+            tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+            Cras elementum ultrices diam. Maecenas ligula massa, varius a,
+            semper congue, euismod non, mi. Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Sed non risus. Suspendisse lectus
+            tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+            Cras elementum ultrices diam. Maecenas ligula massa, varius a,
+            semper congue, euismod non, mi. Suspendisse lectus tortor, dignissim
+            sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum
+            ultrices diam. Maecenas ligula massa, varius a, semper congue,
+            euismod non, mi. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet,
+            adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.
+            Maecenas ligula massa, varius a, semper congue, euismod non, mi.
+          </p>
         </div>
       </div>
     </div>
